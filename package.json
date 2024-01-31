@@ -1,0 +1,27 @@
+{
+  "name": "auth-api",
+  "version": "0.0.0",
+  "description": "Authentication API created with NodeJS, Express, TypeScript and MongoDB",
+  "main": "src/index.ts",
+  "repository": "https://github.com/algorodev/auth-api.git",
+  "author": "Alejandro Gonzalez Romero <me@algorodev.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node build/index.js",
+    "dev": "nodemon src/index.ts"
+  },
+  "dependencies": {
+    "dotenv": "16.4.1",
+    "express": "4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "4.17.21",
+    "@types/node": "20.11.14",
+    "concurrently": "8.2.2",
+    "nodemon": "3.0.3",
+    "ts-node": "10.9.2",
+    "typescript": "5.3.3"
+  }
+}
