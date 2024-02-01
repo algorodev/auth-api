@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express'
 import dotenv from 'dotenv'
+import logger from './config/logger.config'
 
 dotenv.config()
 
@@ -11,5 +12,5 @@ app.get('/', (req: Request, res: Response) => {
 })
 
 app.listen(port, () => {
-	console.log(`[API]: running at http://localhost:${port}`)
+	logger.debug(`running at http://localhost:${port}`, { port })
 })
