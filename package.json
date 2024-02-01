@@ -12,7 +12,8 @@
     "dev": "nodemon src/index.ts",
     "build": "npx tsc",
     "lint": "eslint src/**/*.ts",
-    "format": "eslint src/**/*.ts --fix"
+    "format": "eslint src/**/*.ts --fix",
+    "prepare:hooks": "husky install"
   },
   "dependencies": {
     "dotenv": "16.4.1",
@@ -32,10 +33,5 @@
     "nodemon": "3.0.3",
     "ts-node": "10.9.2",
     "typescript": "5.3.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint && yarn build"
-    }
   }
 }
