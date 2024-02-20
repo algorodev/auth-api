@@ -1,11 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2016",
-    "module": "CommonJS",
+    "baseUrl": "src",
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "experimentalDecorators": true,
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": "build",
+    "pretty": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
-    "outDir": "build"
-  }
+    "strict": true,
+    "target": "ES2021",
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "src/**/__tests__"]
 }
