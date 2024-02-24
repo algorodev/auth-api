@@ -14,7 +14,9 @@
     "build": "npx tsc",
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix",
-    "prepare:hooks": "husky install"
+    "prepare:hooks": "husky install",
+    "gen:migration": "prisma migrate dev",
+    "deploy:migration": "prisma migrate deploy"
   },
   "dependencies": {
     "@prisma/client": "5.10.2",
