@@ -6,3 +6,46 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id          Int        @id @default(autoincrement())
+  name        String
+  email       String     @unique
+  password    String
+  accessToken String
+  terms       Boolean
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  Registry    Registry[]
+  UserRoles   UserRole[]
+}
+
+model Role {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  UserRoles UserRole[]
+}
+
+model Registry {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  action    LogAction
+  createdAt DateTime  @default(now())
+  User      User      @relation(fields: [userId], references: [id])
+}
+
+model UserRole {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  roleId    Int
+  createdAt DateTime @default(now())
+  User      User     @relation(fields: [userId], references: [id])
+  Role      Role     @relation(fields: [roleId], references: [id])
+}
+
+enum LogAction {
+  LOGIN
+  LOGOUT
+}
