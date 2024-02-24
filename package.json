@@ -1,7 +1,7 @@
 {
   "name": "auth-api",
-  "version": "0.0.0",
-  "description": "Authentication API created with NodeJS, Express, TypeScript and MongoDB",
+  "version": "0.0.1",
+  "description": "Authentication API created with NodeJS, Express, TypeScript and PostgreSQL",
   "main": "src/index.ts",
   "repository": "https://github.com/algorodev/auth-api.git",
   "author": "Alejandro Gonzalez Romero <me@algorodev.com>",
@@ -10,6 +10,7 @@
   "scripts": {
     "start": "node build/index.js",
     "dev": "nodemon src/index.ts",
+    "test": "jest",
     "build": "npx tsc",
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix",
@@ -21,21 +22,27 @@
     "express": "4.18.2",
     "helmet": "7.1.0",
     "morgan": "1.10.0",
-    "rate-limiter-flexible": "^4.0.1",
+    "rate-limiter-flexible": "4.0.1",
+    "swagger-ui-express": "5.0.0",
     "winston": "3.11.0"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.17",
+    "@types/cors": "2.8.17",
     "@types/express": "4.17.21",
+    "@types/jest": "29.5.12",
     "@types/morgan": "1.9.9",
     "@types/node": "20.11.14",
+    "@types/swagger-ui-express": "4.1.6",
     "@typescript-eslint/eslint-plugin": "6.20.0",
     "@typescript-eslint/parser": "6.20.0",
     "concurrently": "8.2.2",
     "eslint": "8.56.0",
-    "eslint-plugin-security": "^2.1.0",
+    "eslint-plugin-security": "2.1.0",
     "husky": "9.0.7",
+    "jest": "29.7.0",
     "nodemon": "3.0.3",
+    "swagger-autogen": "2.23.7",
+    "ts-jest": "29.1.2",
     "ts-node": "10.9.2",
     "typescript": "5.3.3"
   }

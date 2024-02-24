@@ -1,0 +1,34 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "Authentication API",
+    "description": "Authentication API created with NodeJS, Express, TypeScript and PostgreSQL"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3030",
+      "description": "Local Server"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "Hello World",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
