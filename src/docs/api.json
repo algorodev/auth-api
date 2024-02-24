@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "v1.0.0",
+    "version": "0.0.1",
     "title": "Authentication API",
-    "description": "Authentication API created with NodeJS, Express, TypeScript and MongoDB"
+    "description": "Authentication API created with NodeJS, Express, TypeScript and PostgreSQL"
   },
   "servers": [
     {
@@ -12,9 +12,9 @@
     }
   ],
   "paths": {
-    "/api/": {
+    "/": {
       "get": {
-        "description": "",
+        "description": "Hello World",
         "responses": {
           "200": {
             "description": "OK"

@@ -1,6 +1,9 @@
-import { Express } from 'express'
+import { Router } from 'express'
 import appRoutes from './app.routes'
 
-export const setApiRoutes = (app: Express) => {
-	app.use('/api', appRoutes)
-}
+const router = Router()
+
+router.use('/', appRoutes)
+
+export default router
+

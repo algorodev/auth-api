@@ -9,7 +9,7 @@ import logger from './config/logger.config'
 import httpLogger from './config/httpLogger.config'
 import rateLimiterMiddleware from './middlewares/rateLimiter.middleware'
 import swaggerOutput from './docs/api.json'
-import { setApiRoutes } from './routes'
+import router from './routes'
 
 dotenv.config()
 
@@ -22,7 +22,7 @@ app.use(cors())
 app.use(helmet())
 app.use(rateLimiterMiddleware)
 
-setApiRoutes(app)
+app.use('/api', router)
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput))
 
