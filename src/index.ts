@@ -5,11 +5,12 @@ import express from 'express'
 import helmet from 'helmet'
 import swaggerUi from 'swagger-ui-express'
 
+import swaggerOutput from './docs/api.json'
 import logger from './config/logger.config'
 import httpLogger from './config/httpLogger.config'
 import rateLimiterMiddleware from './middlewares/rateLimiter.middleware'
-import swaggerOutput from './docs/api.json'
 import router from './routes'
+import { connectDatabase } from './database/dbconnect'
 
 dotenv.config()
 
@@ -23,8 +24,9 @@ app.use(helmet())
 app.use(rateLimiterMiddleware)
 
 app.use('/api', router)
-
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput))
+
+connectDatabase()
 
 app.listen(port, () => {
 	logger.debug(`running at http://localhost:${port}`, { port })
