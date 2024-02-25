@@ -15,8 +15,9 @@
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix",
     "prepare:hooks": "husky install",
-    "gen:migration": "prisma migrate dev",
-    "deploy:migration": "prisma migrate deploy"
+    "gen:migration": "prisma migrate dev --create-only",
+    "deploy:migration": "prisma migrate deploy",
+    "reset:migration": "prisma migrate reset"
   },
   "dependencies": {
     "@prisma/client": "5.10.2",

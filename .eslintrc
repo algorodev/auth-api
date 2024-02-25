@@ -5,5 +5,7 @@
     "plugin:security/recommended-legacy"
   ],
   "parserOptions": { "ecmaVersion": 2018, "sourceType": "module" },
-  "rules": {}
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "warn"
+  }
 }
