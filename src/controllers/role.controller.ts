@@ -31,7 +31,7 @@ export const getAllRolesHandler = async (_: Request, res: Response) => {
 		const result = await queryGetAllRoles()
 		res.status(RESPONSE_CODES.OK).send({ roles: result })
 	} catch (error: any) {
-		logger.debug('getAllRolesHandler')
+		logger.error('getAllRolesHandler', { error: error.message})
 		res.status(RESPONSE_CODES.INTERNAL_SERVER_ERROR).send(error)
 	}
 }
@@ -42,7 +42,7 @@ export const getActiveRolesHandler = async (_: Request, res: Response) => {
 		const result = await queryGetActiveRoles()
 		res.status(RESPONSE_CODES.OK).send({ roles: result })
 	} catch (error: any) {
-		logger.debug('getActiveRolesHandler')
+		logger.error('getActiveRolesHandler', { error: error.message })
 		res.status(RESPONSE_CODES.INTERNAL_SERVER_ERROR).send(error)
 	}
 }
