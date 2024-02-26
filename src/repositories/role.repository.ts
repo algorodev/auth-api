@@ -1,5 +1,5 @@
 import logger from '../config/logger.config'
-import { client } from '../database/dbconnect'
+import client from '../database/client'
 import { RoleI } from '../types/role.types'
 
 export const queryCreateRole = async (name: string) => {
