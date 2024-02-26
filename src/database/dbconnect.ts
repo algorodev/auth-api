@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client'
+import client from './client'
 import logger from '../config/logger.config'
-
-export const client = new PrismaClient()
 
 export const connectDatabase = () => {
 	try {
