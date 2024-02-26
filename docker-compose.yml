@@ -11,3 +11,14 @@ services:
       POSTGRES_DB: auth-api
     volumes:
       - ./pgdata:/var/lib/postgresql/auth-api-db
+  auth-api-test-db:
+    image: postgres
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: auth-api
+    volumes:
+      - ./pgdata:/var/lib/postgresql/auth-api-test-db
