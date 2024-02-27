@@ -8,13 +8,8 @@ import {
 	queryGetAllRoles,
 	queryUpdateRoleById,
 } from '../repositories/role.repository'
-import {
-	CreateRoleRequest,
-	DeleteRoleRequest,
-	UpdateRoleRequest
-} from '../types/role.types'
 
-export const createRoleHandler = async ({ body }: CreateRoleRequest, res: Response) => {
+export const createRoleHandler = async ({ body }: Request, res: Response) => {
 	try {
 		logger.debug('createRoleHandler', { body: body.name })
 		await queryCreateRole(body.name)
@@ -47,10 +42,10 @@ export const getActiveRolesHandler = async (_: Request, res: Response) => {
 	}
 }
 
-export const updateRoleByIdHandler = async ({ body, params }: UpdateRoleRequest, res: Response) => {
+export const updateRoleByIdHandler = async ({ body, params }: Request, res: Response) => {
 	try {
 		logger.debug('updateRoleByIdHandler', { body: body.isActive, params: params.id })
-		await queryUpdateRoleById(params.id, body.isActive)
+		await queryUpdateRoleById(+params.id, body.isActive)
 		res.status(RESPONSE_CODES.OK).send({ message: 'Role has been successfully updated' })
 	} catch (error: any) {
 		logger.error('updateRoleByIdHandler', { error: error.message })
@@ -58,10 +53,10 @@ export const updateRoleByIdHandler = async ({ body, params }: UpdateRoleRequest,
 	}
 }
 
-export const deleteRoleByIdHandler = async ({ params }: DeleteRoleRequest, res: Response) => {
+export const deleteRoleByIdHandler = async ({ params }: Request, res: Response) => {
 	try {
 		logger.debug('deleteRoleByIdHandler', { params: params.id })
-		await queryDeleteRoleById(params.id)
+		await queryDeleteRoleById(+params.id)
 		res.status(RESPONSE_CODES.OK).send({ message: 'Role has been successfully deleted' })
 	} catch (error: any) {
 		logger.error('deleteRoleByIdHandler', { error: error.message })
