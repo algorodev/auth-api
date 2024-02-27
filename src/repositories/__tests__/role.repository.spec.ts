@@ -1,3 +1,5 @@
+import { PrismaClient } from '@prisma/client'
+import { DeepMockProxy, mockDeep, mockReset } from 'jest-mock-extended'
 import {
 	queryCreateRole,
 	queryDeleteRoleById,
@@ -5,7 +7,18 @@ import {
 	queryGetAllRoles,
 	queryUpdateRoleById,
 } from '../role.repository'
-import { prismaMock } from '../../test/utils/database.utils'
+import client from '../../database/client'
+
+jest.mock('../../database/client', () => ({
+	__esModule: true,
+	default: mockDeep<PrismaClient>(),
+}))
+
+beforeEach(() => {
+	mockReset(prismaMock)
+})
+
+const prismaMock = client as unknown as DeepMockProxy<PrismaClient>
 
 describe('Role Repository', () => {
 	afterEach(() => {

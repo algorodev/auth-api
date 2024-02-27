@@ -55,7 +55,7 @@ describe('Role Controller', () => {
 			expect(res.status).toHaveBeenCalledTimes(1)
 			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.CREATED)
 			expect(res.send).toHaveBeenCalledTimes(1)
-			expect(res.send).toHaveBeenCalledWith('Role has been successfully created')
+			expect(res.send).toHaveBeenCalledWith({ message: 'Role has been successfully created' })
 		})
 
 		it('should not create role and return INTERNAL SERVER ERROR', async () => {
@@ -71,7 +71,7 @@ describe('Role Controller', () => {
 			expect(res.status).toHaveBeenCalledTimes(1)
 			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.INTERNAL_SERVER_ERROR)
 			expect(res.send).toHaveBeenCalledTimes(1)
-			expect(res.send).toHaveBeenCalledWith({ message: 'someError' })
+			expect(res.send).toHaveBeenCalledWith({ error: { message: 'someError' } })
 		})
 	})
 
@@ -103,7 +103,7 @@ describe('Role Controller', () => {
 			expect(res.status).toHaveBeenCalledTimes(1)
 			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.INTERNAL_SERVER_ERROR)
 			expect(res.send).toHaveBeenCalledTimes(1)
-			expect(res.send).toHaveBeenCalledWith({ message: 'someError' })
+			expect(res.send).toHaveBeenCalledWith({ error: { message: 'someError' } })
 		})
 	})
 
@@ -135,7 +135,7 @@ describe('Role Controller', () => {
 			expect(res.status).toHaveBeenCalledTimes(1)
 			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.INTERNAL_SERVER_ERROR)
 			expect(res.send).toHaveBeenCalledTimes(1)
-			expect(res.send).toHaveBeenCalledWith({ message: 'someError' })
+			expect(res.send).toHaveBeenCalledWith({ error: { message: 'someError' } })
 		})
 	})
 
@@ -153,7 +153,7 @@ describe('Role Controller', () => {
 			expect(res.status).toHaveBeenCalledTimes(1)
 			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.OK)
 			expect(res.send).toHaveBeenCalledTimes(1)
-			expect(res.send).toHaveBeenCalledWith('Role has been successfully updated')
+			expect(res.send).toHaveBeenCalledWith({ message: 'Role has been successfully updated' })
 		})
 
 		it('should not create role and return INTERNAL SERVER ERROR', async () => {
@@ -169,7 +169,7 @@ describe('Role Controller', () => {
 			expect(res.status).toHaveBeenCalledTimes(1)
 			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.INTERNAL_SERVER_ERROR)
 			expect(res.send).toHaveBeenCalledTimes(1)
-			expect(res.send).toHaveBeenCalledWith({ message: 'someError' })
+			expect(res.send).toHaveBeenCalledWith({ error: { message: 'someError' } })
 		})
 	})
 
@@ -187,7 +187,7 @@ describe('Role Controller', () => {
 			expect(res.status).toHaveBeenCalledTimes(1)
 			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.OK)
 			expect(res.send).toHaveBeenCalledTimes(1)
-			expect(res.send).toHaveBeenCalledWith('Role has been successfully deleted')
+			expect(res.send).toHaveBeenCalledWith({ message: 'Role has been successfully deleted' })
 		})
 
 		it('should not create role and return INTERNAL SERVER ERROR', async () => {
@@ -203,7 +203,7 @@ describe('Role Controller', () => {
 			expect(res.status).toHaveBeenCalledTimes(1)
 			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.INTERNAL_SERVER_ERROR)
 			expect(res.send).toHaveBeenCalledTimes(1)
-			expect(res.send).toHaveBeenCalledWith({ message: 'someError' })
+			expect(res.send).toHaveBeenCalledWith({ error: { message: 'someError' } })
 		})
 	})
 })

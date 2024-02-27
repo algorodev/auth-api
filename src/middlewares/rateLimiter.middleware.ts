@@ -1,5 +1,6 @@
 import { NextFunction, Response, Request } from 'express'
 import rateLimiter from '../config/rateLimiter.config'
+import { RESPONSE_CODES } from '../constants/global.contants'
 
 const rateLimiterMiddleware = (req: Request, res: Response, next: NextFunction) => {
 	rateLimiter.consume(req.ip!)
@@ -7,7 +8,7 @@ const rateLimiterMiddleware = (req: Request, res: Response, next: NextFunction) 
 			next()
 		})
 		.catch(() => {
-			res.status(429).send('Too many requests!')
+			res.status(RESPONSE_CODES.TOO_MANY_REQUESTS).send('Too many requests!')
 		})
 }
 

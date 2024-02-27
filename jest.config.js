@@ -18,7 +18,6 @@ module.exports = {
   moduleDirectories: ['node_modules', 'src'],
   moduleFileExtensions: ['ts', 'js', 'json', 'node'],
   preset: 'ts-jest',
-  setupFilesAfterEnv: ['<rootDir>/src/test/utils/database.utils.ts'],
   testMatch: ['<rootDir>/src/**/*.spec.{js,ts}'],
   transform: { '^.+\\.ts?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.prod.json' }] },
   verbose: true,

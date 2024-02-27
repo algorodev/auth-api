@@ -18,10 +18,10 @@ export const createRoleHandler = async ({ body }: CreateRoleRequest, res: Respon
 	try {
 		logger.debug('createRoleHandler', { body: body.name })
 		await queryCreateRole(body.name)
-		res.status(RESPONSE_CODES.CREATED).send('Role has been successfully created')
+		res.status(RESPONSE_CODES.CREATED).send({ message: 'Role has been successfully created' })
 	} catch (error: any) {
 		logger.error('createRoleHandler', { error: error.message })
-		res.status(RESPONSE_CODES.INTERNAL_SERVER_ERROR).send(error)
+		res.status(RESPONSE_CODES.INTERNAL_SERVER_ERROR).send({ error })
 	}
 }
 
@@ -32,7 +32,7 @@ export const getAllRolesHandler = async (_: Request, res: Response) => {
 		res.status(RESPONSE_CODES.OK).send({ roles: result })
 	} catch (error: any) {
 		logger.error('getAllRolesHandler', { error: error.message})
-		res.status(RESPONSE_CODES.INTERNAL_SERVER_ERROR).send(error)
+		res.status(RESPONSE_CODES.INTERNAL_SERVER_ERROR).send({ error })
 	}
 }
 
@@ -43,7 +43,7 @@ export const getActiveRolesHandler = async (_: Request, res: Response) => {
 		res.status(RESPONSE_CODES.OK).send({ roles: result })
 	} catch (error: any) {
 		logger.error('getActiveRolesHandler', { error: error.message })
-		res.status(RESPONSE_CODES.INTERNAL_SERVER_ERROR).send(error)
+		res.status(RESPONSE_CODES.INTERNAL_SERVER_ERROR).send({ error })
 	}
 }
 
@@ -51,10 +51,10 @@ export const updateRoleByIdHandler = async ({ body, params }: UpdateRoleRequest,
 	try {
 		logger.debug('updateRoleByIdHandler', { body: body.isActive, params: params.id })
 		await queryUpdateRoleById(params.id, body.isActive)
-		res.status(RESPONSE_CODES.OK).send('Role has been successfully updated')
+		res.status(RESPONSE_CODES.OK).send({ message: 'Role has been successfully updated' })
 	} catch (error: any) {
 		logger.error('updateRoleByIdHandler', { error: error.message })
-		res.status(RESPONSE_CODES.INTERNAL_SERVER_ERROR).send(error)
+		res.status(RESPONSE_CODES.INTERNAL_SERVER_ERROR).send({ error })
 	}
 }
 
@@ -62,9 +62,9 @@ export const deleteRoleByIdHandler = async ({ params }: DeleteRoleRequest, res: 
 	try {
 		logger.debug('deleteRoleByIdHandler', { params: params.id })
 		await queryDeleteRoleById(params.id)
-		res.status(RESPONSE_CODES.OK).send('Role has been successfully deleted')
+		res.status(RESPONSE_CODES.OK).send({ message: 'Role has been successfully deleted' })
 	} catch (error: any) {
 		logger.error('deleteRoleByIdHandler', { error: error.message })
-		res.status(RESPONSE_CODES.INTERNAL_SERVER_ERROR).send(error)
+		res.status(RESPONSE_CODES.INTERNAL_SERVER_ERROR).send({ error })
 	}
 }

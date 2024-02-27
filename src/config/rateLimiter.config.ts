@@ -1,7 +1,7 @@
 import { RateLimiterMemory } from 'rate-limiter-flexible'
 
 const rateLimiter = new RateLimiterMemory({
-	points: 10,
+	points: 20,
 	duration: 1,
 })
 
