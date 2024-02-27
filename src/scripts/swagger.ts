@@ -7,7 +7,7 @@ const doc = {
 		description: 'Authentication API created with NodeJS, Express, TypeScript and PostgreSQL'
 	},
 	servers: [
-		{ url: 'http://localhost:3030', description: 'Local Server' }
+		{ url: 'http://localhost:3030/api', description: 'Local Server' }
 	],
 	components: {
 		securitySchemes: {
