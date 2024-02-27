@@ -14,7 +14,6 @@ import {
 	getAllRolesHandler,
 	updateRoleByIdHandler,
 } from '../role.controller'
-import { CreateRoleRequest, DeleteRoleRequest, UpdateRoleRequest } from '../../types/role.types'
 
 jest.mock('../../repositories/role.repository', () => ({
 	queryCreateRole: jest.fn(),
@@ -46,7 +45,7 @@ describe('Role Controller', () => {
 			;(queryCreateRole as jest.Mock).mockResolvedValue(void 0)
 
 			await createRoleHandler(
-				req as unknown as CreateRoleRequest,
+				req as Request,
 				res as Response
 			)
 
@@ -62,7 +61,7 @@ describe('Role Controller', () => {
 			;(queryCreateRole as jest.Mock).mockRejectedValue({ message: 'someError' })
 
 			await createRoleHandler(
-				req as unknown as CreateRoleRequest,
+				req as Request,
 				res as Response
 			)
 
@@ -144,12 +143,12 @@ describe('Role Controller', () => {
 			;(queryUpdateRoleById as jest.Mock).mockResolvedValue(void 0)
 
 			await updateRoleByIdHandler(
-				req as unknown as UpdateRoleRequest,
+				req as Request,
 				res as Response
 			)
 
 			expect(queryUpdateRoleById).toHaveBeenCalledTimes(1)
-			expect(queryUpdateRoleById).toHaveBeenCalledWith('1', true)
+			expect(queryUpdateRoleById).toHaveBeenCalledWith(1, true)
 			expect(res.status).toHaveBeenCalledTimes(1)
 			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.OK)
 			expect(res.send).toHaveBeenCalledTimes(1)
@@ -160,12 +159,12 @@ describe('Role Controller', () => {
 			;(queryUpdateRoleById as jest.Mock).mockRejectedValue({ message: 'someError' })
 
 			await updateRoleByIdHandler(
-				req as unknown as UpdateRoleRequest,
+				req as Request,
 				res as Response
 			)
 
 			expect(queryUpdateRoleById).toHaveBeenCalledTimes(1)
-			expect(queryUpdateRoleById).toHaveBeenCalledWith('1', true)
+			expect(queryUpdateRoleById).toHaveBeenCalledWith(1, true)
 			expect(res.status).toHaveBeenCalledTimes(1)
 			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.INTERNAL_SERVER_ERROR)
 			expect(res.send).toHaveBeenCalledTimes(1)
@@ -178,12 +177,12 @@ describe('Role Controller', () => {
 			;(queryDeleteRoleById as jest.Mock).mockResolvedValue(void 0)
 
 			await deleteRoleByIdHandler(
-				req as unknown as DeleteRoleRequest,
+				req as Request,
 				res as Response
 			)
 
 			expect(queryDeleteRoleById).toHaveBeenCalledTimes(1)
-			expect(queryDeleteRoleById).toHaveBeenCalledWith('1')
+			expect(queryDeleteRoleById).toHaveBeenCalledWith(1)
 			expect(res.status).toHaveBeenCalledTimes(1)
 			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.OK)
 			expect(res.send).toHaveBeenCalledTimes(1)
@@ -194,12 +193,12 @@ describe('Role Controller', () => {
 			;(queryDeleteRoleById as jest.Mock).mockRejectedValue({ message: 'someError' })
 
 			await deleteRoleByIdHandler(
-				req as unknown as DeleteRoleRequest,
+				req as Request,
 				res as Response
 			)
 
 			expect(queryDeleteRoleById).toHaveBeenCalledTimes(1)
-			expect(queryDeleteRoleById).toHaveBeenCalledWith('1')
+			expect(queryDeleteRoleById).toHaveBeenCalledWith(1)
 			expect(res.status).toHaveBeenCalledTimes(1)
 			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.INTERNAL_SERVER_ERROR)
 			expect(res.send).toHaveBeenCalledTimes(1)
