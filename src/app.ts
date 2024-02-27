@@ -1,13 +1,14 @@
 import express from 'express'
-import httpLogger from './config/httpLogger.config'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import helmet from 'helmet'
+import swaggerUi from 'swagger-ui-express'
+import httpLogger from './config/httpLogger.config'
+import { connectDatabase } from './database/dbconnect'
+import swaggerOutput from './docs/api.json'
+import errorMiddleware from './middlewares/error.middleware'
 import rateLimiterMiddleware from './middlewares/rateLimiter.middleware'
 import router from './routes'
-import swaggerUi from 'swagger-ui-express'
-import swaggerOutput from './docs/api.json'
-import { connectDatabase } from './database/dbconnect'
 
 const app = express()
 
@@ -19,6 +20,8 @@ app.use(rateLimiterMiddleware)
 
 app.use('/api', router)
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput))
+
+app.use(errorMiddleware)
 
 connectDatabase()
 

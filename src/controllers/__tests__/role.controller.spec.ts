@@ -29,6 +29,7 @@ describe('Role Controller', () => {
 		params: { id: '1' }
 	} as Partial<Request>
 	const res = {} as Partial<Response>
+	const next = jest.fn()
 
 	res.send = jest.fn().mockReturnValue(res)
 	res.sendStatus = jest.fn().mockReturnValue(res)
@@ -46,7 +47,8 @@ describe('Role Controller', () => {
 
 			await createRoleHandler(
 				req as Request,
-				res as Response
+				res as Response,
+				next
 			)
 
 			expect(queryCreateRole).toHaveBeenCalledTimes(1)
@@ -62,15 +64,14 @@ describe('Role Controller', () => {
 
 			await createRoleHandler(
 				req as Request,
-				res as Response
+				res as Response,
+				next
 			)
 
 			expect(queryCreateRole).toHaveBeenCalledTimes(1)
 			expect(queryCreateRole).toHaveBeenCalledWith('test')
-			expect(res.status).toHaveBeenCalledTimes(1)
-			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.INTERNAL_SERVER_ERROR)
-			expect(res.send).toHaveBeenCalledTimes(1)
-			expect(res.send).toHaveBeenCalledWith({ error: { message: 'someError' } })
+			expect(next).toHaveBeenCalledTimes(1)
+			expect(next).toHaveBeenCalledWith({ message: 'someError' })
 		})
 	})
 
@@ -80,7 +81,8 @@ describe('Role Controller', () => {
 
 			await getAllRolesHandler(
 				req as Request,
-				res as Response
+				res as Response,
+				next
 			)
 
 			expect(queryGetAllRoles).toHaveBeenCalledTimes(1)
@@ -95,14 +97,13 @@ describe('Role Controller', () => {
 
 			await getAllRolesHandler(
 				req as Request,
-				res as Response
+				res as Response,
+				next
 			)
 
 			expect(queryGetAllRoles).toHaveBeenCalledTimes(1)
-			expect(res.status).toHaveBeenCalledTimes(1)
-			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.INTERNAL_SERVER_ERROR)
-			expect(res.send).toHaveBeenCalledTimes(1)
-			expect(res.send).toHaveBeenCalledWith({ error: { message: 'someError' } })
+			expect(next).toHaveBeenCalledTimes(1)
+			expect(next).toHaveBeenCalledWith({ message: 'someError' })
 		})
 	})
 
@@ -112,7 +113,8 @@ describe('Role Controller', () => {
 
 			await getActiveRolesHandler(
 				req as Request,
-				res as Response
+				res as Response,
+				next
 			)
 
 			expect(queryGetActiveRoles).toHaveBeenCalledTimes(1)
@@ -127,14 +129,13 @@ describe('Role Controller', () => {
 
 			await getActiveRolesHandler(
 				req as Request,
-				res as Response
+				res as Response,
+				next
 			)
 
 			expect(queryGetActiveRoles).toHaveBeenCalledTimes(1)
-			expect(res.status).toHaveBeenCalledTimes(1)
-			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.INTERNAL_SERVER_ERROR)
-			expect(res.send).toHaveBeenCalledTimes(1)
-			expect(res.send).toHaveBeenCalledWith({ error: { message: 'someError' } })
+			expect(next).toHaveBeenCalledTimes(1)
+			expect(next).toHaveBeenCalledWith({ message: 'someError' })
 		})
 	})
 
@@ -144,7 +145,8 @@ describe('Role Controller', () => {
 
 			await updateRoleByIdHandler(
 				req as Request,
-				res as Response
+				res as Response,
+				next
 			)
 
 			expect(queryUpdateRoleById).toHaveBeenCalledTimes(1)
@@ -160,15 +162,14 @@ describe('Role Controller', () => {
 
 			await updateRoleByIdHandler(
 				req as Request,
-				res as Response
+				res as Response,
+				next
 			)
 
 			expect(queryUpdateRoleById).toHaveBeenCalledTimes(1)
 			expect(queryUpdateRoleById).toHaveBeenCalledWith(1, true)
-			expect(res.status).toHaveBeenCalledTimes(1)
-			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.INTERNAL_SERVER_ERROR)
-			expect(res.send).toHaveBeenCalledTimes(1)
-			expect(res.send).toHaveBeenCalledWith({ error: { message: 'someError' } })
+			expect(next).toHaveBeenCalledTimes(1)
+			expect(next).toHaveBeenCalledWith({ message: 'someError' })
 		})
 	})
 
@@ -178,7 +179,8 @@ describe('Role Controller', () => {
 
 			await deleteRoleByIdHandler(
 				req as Request,
-				res as Response
+				res as Response,
+				next
 			)
 
 			expect(queryDeleteRoleById).toHaveBeenCalledTimes(1)
@@ -194,15 +196,14 @@ describe('Role Controller', () => {
 
 			await deleteRoleByIdHandler(
 				req as Request,
-				res as Response
+				res as Response,
+				next
 			)
 
 			expect(queryDeleteRoleById).toHaveBeenCalledTimes(1)
 			expect(queryDeleteRoleById).toHaveBeenCalledWith(1)
-			expect(res.status).toHaveBeenCalledTimes(1)
-			expect(res.status).toHaveBeenCalledWith(RESPONSE_CODES.INTERNAL_SERVER_ERROR)
-			expect(res.send).toHaveBeenCalledTimes(1)
-			expect(res.send).toHaveBeenCalledWith({ error: { message: 'someError' } })
+			expect(next).toHaveBeenCalledTimes(1)
+			expect(next).toHaveBeenCalledWith({ message: 'someError' })
 		})
 	})
 })
