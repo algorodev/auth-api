@@ -3,6 +3,8 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     'src/**/*.ts',
+    '!src/**/*.types.ts',
+    '!src/scripts/*.ts'
   ],
   coverageDirectory: "coverage",
   coverageProvider: "v8",
